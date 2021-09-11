@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
-import {IconButton, makeStyles} from "@material-ui/core";
-import RemoveIcon from '@material-ui/icons/Remove';
+import {makeStyles} from "@material-ui/core";
+import try_middle from './try_middle.png';
+import one_blank from './one_blank.png';
+import {Icon} from "./Icon";
 
 const useStyles = makeStyles(() => ({
     note: {
@@ -12,7 +14,9 @@ const useStyles = makeStyles(() => ({
     },
     drawn: {
         display: "flex",
-        flexFlow: "column"
+        flexFlow: "column",
+        padding: 0,
+        margin: 0
     },
     level: {
         height: "5px",
@@ -20,6 +24,9 @@ const useStyles = makeStyles(() => ({
         backgroundColor: "white",
         textDecoration: "line-through"
     },
+    btn: {
+        padding: 0
+    }
 }))
 
 export default function Notes() {
@@ -35,6 +42,7 @@ export default function Notes() {
             }
             <br />
             {current}
+            {drawNote(null, styles, setCurrent)}
         </div>
     );
 }
@@ -65,21 +73,20 @@ function singleNote(note, styles, setCurrent) {
 function drawNote(note, styles, setCurrent) {
     return (
         <div className={styles.drawn}>
-            <Button className={styles.level} color="white" onClick={() => setCurrent("A")}/>
-            <Button variant="contained" color="black"  onClick={() => setCurrent("H")}/>
-            <Button variant="contained" onClick={() => setCurrent("C")}/>
-            <Button variant="contained" onClick={() => setCurrent("D")}/>
-            <Button variant="contained" onClick={() => setCurrent("E")}/>
-            <Button variant="contained" onClick={() => setCurrent("F")}/>
-            <Button variant="contained" onClick={() => setCurrent("G")}/>
-            {emptyButton(() => setCurrent("Z"))}
+            {emptyButton(() => setCurrent("F"), styles)}
+            {emptyButton(() => setCurrent("D"), styles)}
+            {emptyButton(() => setCurrent("H"), styles)}
+            {emptyButton(() => setCurrent("G"), styles)}
+            {emptyButton(() => setCurrent("E"), styles)}
         </div>
     )
 }
 
-function emptyButton(res) {
+function emptyButton(doin, styles) {
     return (
-        <IconButton onClick={res} color="white"><RemoveIcon /></IconButton>
+        <Button onClick={doin} className={styles.btn}>
+            <Icon src={one_blank} srcOnHover={try_middle} alt="what"/>
+        </Button>
     )
 }
 
