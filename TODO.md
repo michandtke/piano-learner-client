@@ -7,7 +7,7 @@
   - enable tones under the lines
   - enable tones over the lines
 - Add random shuffler
-  - Add button to start a new round with random notes
+  - ~~Add button to start a new round with random notes~~
   - Provide a tune field to choose for which one to create the notes
 - Save in the server
   - save the guesses in the server
