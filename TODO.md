@@ -1,0 +1,19 @@
+- Change compare function
+  - ignore special chars
+  - ignore case
+  - ignore sorting
+- Enable all the tones
+  - enable tones in between the lines
+  - enable tones under the lines
+  - enable tones over the lines
+- Add random shuffler
+  - Add button to start a new round with random notes
+  - Provide a tune field to choose for which one to create the notes
+- Save in the server
+  - save the guesses in the server
+  - load the next guesses from the server
+  - highscore?
+- Piano input
+  - print the keys so the input can be on a piano, not with letters
+- Bass input
+  - print the strings so the input can be on a bass, not with letters
