@@ -1,29 +1,17 @@
 import React from "react";
 import Guess from "../guess/Guess";
-import {makeStyles} from "@material-ui/core";
 
-const useStyles = makeStyles(() => ({
-    drawn: {
-        display: "flex",
-        flexFlow: "column",
-        padding: 0,
-        margin: 0
-    },
-    btn: {
-        padding: 0
-    }
-}))
 
 export default function NoteList() {
-    const styles = useStyles()
+    const toGuess = ["f", "d", "h", "e", "g"]
+
+    toGuess.sort(function(){
+        return 0.5 - Math.random();
+    });
 
     return (
         <div>
-            <Guess note={["f"]}/>
-            <Guess note={["d"]}/>
-            <Guess note={["h"]}/>
-            <Guess note={["e"]}/>
-            <Guess note={["g"]}/>
+            { toGuess.map(guess => <Guess note={[guess]}/>) }
         </div>
     );
 }
