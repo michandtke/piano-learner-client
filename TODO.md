@@ -1,7 +1,7 @@
-- Change compare function
-  - ignore special chars
-  - ignore case
-  - ignore sorting
+- ~~Change compare function~~
+  - ~~ignore special chars~~
+  - ~~ignore case~~
+  - ~~ignore sorting~~
 - Enable all the tones
   - enable tones in between the lines
   - enable tones under the lines

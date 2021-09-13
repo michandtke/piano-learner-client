@@ -25,18 +25,31 @@ export default function Guess({note}) {
     const [current, setCurrent] = useState(note)
     const [guessed, setGuessed] = useState("")
 
-    const color = !guessed ? "" : guessed === current.toString() ? styles.correct : styles.wrong
-
     return (
         <div className={styles.guess}>
             <Composed fnCurrentNote={(note) => setCurrent(note)} notes={current}/>
             <div className={styles.input}>
                 <TextField onInput={event => setGuessed(event.target.value)}/>
                 <br />
-                <div className={color}>
+                <div className={calculateColor(guessed, current, styles)}>
                     {guessed}
                 </div>
             </div>
         </div>
     );
+}
+
+function calculateColor(guessed, current, styles) {
+    return !guessed ? "" : checkCorrect(guessed, current) ? styles.correct : styles.wrong
+}
+
+function checkCorrect(guessed, current) {
+    const regex = /[a-zA-Z]/gm;
+    const splitted = guessed.match(regex)
+
+    const currentSorted = current.map(v => v.toLowerCase()).sort();
+    const splittedSorted = splitted.map(v => v.toLowerCase()).sort();
+    return current.length === splitted.length && currentSorted.every(function(value, index) {
+        return value === splittedSorted[index];
+    });
 }
